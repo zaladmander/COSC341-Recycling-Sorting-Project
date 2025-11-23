@@ -20,5 +20,6 @@ public class WelcomeActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         });
+
     }
 }
