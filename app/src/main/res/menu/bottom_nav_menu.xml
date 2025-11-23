@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_identification"
+        android:icon="@drawable/ic_search"
+        android:title="@string/identify" />
+
+    <item
+        android:id="@+id/nav_pickup"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/schedule" />
+
+    <item
+        android:id="@+id/nav_stats"
+        android:icon="@drawable/ic_stats"
+        android:title="@string/stats" />
+
+    <item
+        android:id="@+id/nav_quiz"
+        android:icon="@drawable/ic_quiz"
+        android:title="@string/quiz" />
+
+    <item
+        android:id="@+id/nav_depots"
+        android:icon="@drawable/ic_location"
+        android:title="@string/depots" />
+
+
+</menu>

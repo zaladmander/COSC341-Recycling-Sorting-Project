@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_identification">
+
+    <fragment
+        android:id="@+id/nav_identification"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.identification.FragmentIdentification"
+        android:label="Identify"
+        tools:layout="@layout/fragment_identification" />
+
+    <fragment
+        android:id="@+id/nav_pickup"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.FragmentDepots"
+        android:label="Schedule"
+        tools:layout="@layout/fragment_schedule" />
+
+    <fragment
+        android:id="@+id/nav_stats"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.stats.FragmentStats"
+        android:label="Stats"
+        tools:layout="@layout/fragment_stats" />
+
+    <fragment
+        android:id="@+id/nav_quiz"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.quiz.FragmentQuiz"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_quiz" />
+
+    <fragment
+        android:id="@+id/nav_depots"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.FragmentDepots"
+        android:label="Depots"
+        tools:layout="@layout/fragment_depots" />
+
+</navigation>
