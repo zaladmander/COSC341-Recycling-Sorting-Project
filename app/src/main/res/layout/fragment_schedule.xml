@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/BlankViewScheduler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.schedule.FragmentSchedule">
@@ -10,5 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        android:id="@+id/txtPickupSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pickup Scheduler"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:translationX="110dp"
+        android:translationY="65dp" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="232dp"
+        android:layout_height="54dp"
+        android:text="Please find and select your neighbourhood to see pickup details in your area."
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:translationX="85dp"
+        android:translationY="120dp" />
+
+    <Spinner
+        android:id="@+id/spnHood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:translationY="200dp" />
 
 </FrameLayout>
