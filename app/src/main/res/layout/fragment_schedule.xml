@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/BlankViewScheduler"
     android:layout_width="match_parent"
@@ -34,8 +35,27 @@
 
     <Spinner
         android:id="@+id/spnHood"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:entries="@array/neighbourhood_options"
+        android:translationX="45dp"
         android:translationY="200dp" />
+
+    <ImageView
+        android:id="@+id/imgViewMap"
+        android:layout_width="264dp"
+        android:layout_height="236dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/kelowna_garbage_pickup_map"
+        android:translationX="60dp"
+        android:translationY="420dp" />
+
+    <Button
+        android:id="@+id/btnSeeSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See Schedule"
+        android:translationX="130dp"
+        android:translationY="350dp" />
 
 </FrameLayout>
