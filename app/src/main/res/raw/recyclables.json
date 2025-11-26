@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Plastic bag",
+    "description": "Film plastic bags should be taken to drop-off depots, not curbside.",
+    "imageResId": "plastic_bag",
+    "category": "PLASTIC"
+  }
+]
