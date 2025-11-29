@@ -3,16 +3,22 @@ package com.example.cosc341_recycling_sorting_project.ui.identification;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
 
 import com.example.cosc341_recycling_sorting_project.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,6 +40,11 @@ import java.util.Map;
 
 
 public class FragmentIdentification extends Fragment {
+
+    private Map<Category, List<Recyclable>> dataByCategory;
+    private RecyclableGridAdapter gridAdapter;
+    private List<Recyclable> currentList = new ArrayList<>();
+
     public FragmentIdentification() {
         // Required empty public constructor
     }
@@ -102,15 +113,77 @@ public class FragmentIdentification extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ExpandableListView accordion = view.findViewById(R.id.expandableCategories);
+        Spinner spinner = view.findViewById(R.id.spinnerCategory);
+        RecyclerView recycler = view.findViewById(R.id.recyclerRecyclables);
+        TextInputEditText search = view.findViewById(R.id.editTextSearch);
 
-        List<Category> groups = Arrays.asList(Category.values());
-        Map<Category, List<Recyclable>> data = buildData();
+        // buildData: your existing JSON → Map<Category, List<Recyclable>>
+        dataByCategory = buildData();
 
-        CategoryExpandableAdapter adapter =
-                new CategoryExpandableAdapter(requireContext(), groups, data);
+        // Spinner for categories
+        final List<Category> categories = Arrays.asList(Category.values());
+        ArrayAdapter<Category> spinnerAdapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_dropdown_item,
+                categories
+        );
+        spinner.setAdapter(spinnerAdapter);
 
-        accordion.setAdapter(adapter);
+        // RecyclerView grid
+        gridAdapter = new RecyclableGridAdapter(requireContext());
+        recycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        recycler.setAdapter(gridAdapter);
+
+        // initial category
+        if (!categories.isEmpty()) {
+            Category initial = categories.get(0);
+            updateGridForCategory(initial, null);
+        }
+
+        // change category
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+                Category selected = categories.get(position);
+                String query = search.getText() != null ? search.getText().toString() : "";
+                updateGridForCategory(selected, query);
+            }
+
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
+        // search filter
+        search.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Category selected = (Category) spinner.getSelectedItem();
+                String query = s.toString();
+                updateGridForCategory(selected, query);
+            }
+        });
+    }
+
+    private void updateGridForCategory(Category category, @Nullable String query) {
+        List<Recyclable> list = dataByCategory.get(category);
+        if (list == null) list = new ArrayList<>();
+
+        query = (query == null) ? "" : query.trim().toLowerCase();
+
+        if (query.isEmpty()) {
+            currentList = new ArrayList<>(list);
+        } else {
+            List<Recyclable> filtered = new ArrayList<>();
+            for (Recyclable r : list) {
+                if (r.getName().toLowerCase().contains(query)) {
+                    filtered.add(r);
+                }
+            }
+            currentList = filtered;
+        }
+
+        gridAdapter.submitList(currentList);
     }
 
 }
