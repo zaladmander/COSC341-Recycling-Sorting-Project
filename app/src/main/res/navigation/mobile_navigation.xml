@@ -13,9 +13,23 @@
 
     <fragment
         android:id="@+id/nav_pickup"
-        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.FragmentDepots"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.schedule.FragmentSchedule"
         android:label="Schedule"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule">
+
+    <!-- Add an action to go to the details screen -->
+    <action
+        android:id="@+id/action_schedule_to_scheduleDetails"
+        app:destination="@id/nav_schedule_result" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_schedule_result"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.schedule.FragmentScheduleResult"
+        android:label="Schedule Results"
+        tools:layout="@layout/fragment_schedule_result" />
+
 
     <fragment
         android:id="@+id/nav_stats"

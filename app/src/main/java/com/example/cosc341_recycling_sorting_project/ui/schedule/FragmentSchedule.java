@@ -3,6 +3,8 @@ package com.example.cosc341_recycling_sorting_project.ui.schedule;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +50,7 @@ public class FragmentSchedule extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +63,17 @@ public class FragmentSchedule extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+
+        // Button
+        View btnSeeSchedule = view.findViewById(R.id.btnSeeSchedule);
+
+        btnSeeSchedule.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            navController.navigate(R.id.action_schedule_to_scheduleDetails);
+        });
+
+        return view;
     }
 }
