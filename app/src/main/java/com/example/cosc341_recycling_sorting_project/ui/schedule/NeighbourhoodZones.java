@@ -8,7 +8,7 @@ import java.util.Map;
 
         static {
             ZONES.put("Ellison", "Monday A");
-            ZONES.put("Rutland/East Glenmore", "Wednesday A");
+            ZONES.put("Rutland/East-Glenmore", "Wednesday A");
             ZONES.put("Joe Rich", "Thursday A");
             ZONES.put("West Glenmore", "Monday B");
             ZONES.put("Downtown", "Monday B");

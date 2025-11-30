@@ -73,11 +73,14 @@ public class FragmentSchedule extends Fragment {
         Spinner spnHoods = view.findViewById(R.id.spnHood);
 
         btnSeeSchedule.setOnClickListener(v -> {
-           //get and pass the selected neighbourhood to the next fragment
+           //get the selected neighbourhood to the next fragment
             String hood = spnHoods.getSelectedItem().toString();
-
+            //get respective zone
+            String zone = NeighbourhoodZones.ZONES.get(hood);
+            //pass args
             Bundle bundle = new Bundle();
             bundle.putString("selected_hood", hood);
+            bundle.putString("selected_zone", zone);
 
             NavController navController = Navigation.findNavController(v);
             navController.navigate(R.id.action_schedule_to_scheduleDetails, bundle);
