@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.cosc341_recycling_sorting_project.R;
 
@@ -57,6 +59,14 @@ public class FragmentScheduleResult extends Fragment {
                 txtSchedInfo.setText("According to your selected neighbourhood you are in Zone: " + zone.toUpperCase() + "\nThis means for the week of "+ today.toString() +" you should put out your RECYCLING and GARBAGE bins on " + zone.split(" ")[0] + ".");
             }
         }
+
+        Button btnSeeFullSched = view.findViewById(R.id.btnSeeFullSched);
+        btnSeeFullSched.setOnClickListener(v -> {
+            NavHostFragment.findNavController(FragmentScheduleResult.this)
+                    .navigate(R.id.action_schedule_result_to_full);
+        });
+
+
         return view;
     }
 
