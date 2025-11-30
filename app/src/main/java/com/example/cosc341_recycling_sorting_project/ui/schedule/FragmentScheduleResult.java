@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +17,22 @@ public class FragmentScheduleResult extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_schedule_result, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_schedule_result, container, false);
+        TextView txtSchedInfo = view.findViewById(R.id.txtSchedInfo);
+        TextView txtSelectedHood = view.findViewById(R.id.txtSelectedHood);
+
+        //receive the selected neighbourhood and place where necessary
+        if (getArguments() != null) {
+            String hood = getArguments().getString("selected_hood");
+            txtSelectedHood.setText("Neighbourhood: "+ hood.toUpperCase());
+            txtSchedInfo.setText("According to your selected neighbourhood you are in DAYOFWEEK A/B.... This means for the week of DATE you should put out your RECYCLING/COMPOST and GARBAGE bins.");
+
+        }
+
+
+        return view;
     }
+
 }

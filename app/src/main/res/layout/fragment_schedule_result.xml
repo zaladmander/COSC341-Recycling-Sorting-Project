@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtPickupSchedule2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="220dp"
+        android:text="Pickup Scheduler"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:translationX="110dp"
+        android:translationY="115dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSchedInfo"
+        android:layout_width="325dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="130dp"
+        android:text="According to your selected neighbourhood you are in DAYOFWEEK A/B.... This means for the week of DATE you should put out your RECYCLING/COMPOST and GARBAGE bins."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:translationX="85dp"
+        android:translationY="170dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPickupSchedule2" />
+
+    <Button
+        android:id="@+id/btnNotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="100dp"
+        android:text="Notify Me"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSeeFullSched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="See Full Schedule"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNotify" />
+
+    <TextView
+        android:id="@+id/txtSelectedHood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="175dp"
+        android:layout_marginEnd="175dp"
+        android:text="Neighbourhood: SAMPLE"
+        app:layout_constraintBottom_toTopOf="@+id/txtSchedInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNotifyProposal"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="If you would like to be notified in the future, select the 'Notify Me' button."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btnNotify"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

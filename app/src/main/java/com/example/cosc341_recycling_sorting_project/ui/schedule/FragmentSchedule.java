@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
 import com.example.cosc341_recycling_sorting_project.R;
 
@@ -68,10 +69,18 @@ public class FragmentSchedule extends Fragment {
 
         // Button
         View btnSeeSchedule = view.findViewById(R.id.btnSeeSchedule);
+        //Spinner
+        Spinner spnHoods = view.findViewById(R.id.spnHood);
 
         btnSeeSchedule.setOnClickListener(v -> {
+           //get and pass the selected neighbourhood to the next fragment
+            String hood = spnHoods.getSelectedItem().toString();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("selected_hood", hood);
+
             NavController navController = Navigation.findNavController(v);
-            navController.navigate(R.id.action_schedule_to_scheduleDetails);
+            navController.navigate(R.id.action_schedule_to_scheduleDetails, bundle);
         });
 
         return view;
