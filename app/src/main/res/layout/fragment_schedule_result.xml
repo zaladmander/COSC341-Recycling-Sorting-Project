@@ -22,7 +22,7 @@
         android:id="@+id/txtSchedInfo"
         android:layout_width="325dp"
         android:layout_height="137dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="155dp"
         android:layout_marginEnd="130dp"
         android:text="According to your selected neighbourhood you are in DAYOFWEEK A/B.... This means for the week of DATE you should put out your RECYCLING/COMPOST and GARBAGE bins."
         android:textAlignment="center"
@@ -73,5 +73,15 @@
         app:layout_constraintBottom_toTopOf="@+id/btnNotify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgHood"
+        android:layout_width="150dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtSelectedHood"
+        app:srcCompat="@drawable/section_rutland_kelowna_garbage_pickup_map" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

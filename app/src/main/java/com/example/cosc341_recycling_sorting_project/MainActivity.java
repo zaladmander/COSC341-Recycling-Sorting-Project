@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         //create notification channel - for recycling schedule
         createNotificationChannel();
-        //requestNotificationPermission();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

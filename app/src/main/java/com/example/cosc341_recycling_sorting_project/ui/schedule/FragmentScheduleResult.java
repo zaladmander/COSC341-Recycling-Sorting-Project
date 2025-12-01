@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,6 +99,7 @@ public class FragmentScheduleResult extends Fragment {
         TextView txtSchedInfo = view.findViewById(R.id.txtSchedInfo);
         TextView txtSelectedHood = view.findViewById(R.id.txtSelectedHood);
         Button btnNotify = view.findViewById(R.id.btnNotify);
+        ImageView imgHood = view.findViewById(R.id.imgHood);
 
         // grab this weeks even or oddness (optional display)
         LocalDate today = null;
@@ -113,8 +115,33 @@ public class FragmentScheduleResult extends Fragment {
         // receive the selected neighbourhood and place where necessary
         if (getArguments() != null) {
             String hood = getArguments().getString("selected_hood");
+            //set appropriate hood image
+            //please forgive my sins of switch case
+            switch(hood.toLowerCase()){
+                case "ellison":
+                    imgHood.setImageResource(R.drawable.ellison_image_from_map);
+                    break;
+                case "rutland/east-glenmore":
+                    imgHood.setImageResource(R.drawable.section_rutland_kelowna_garbage_pickup_map);
+                    break;
+                case "joe rich":
+                    imgHood.setImageResource(R.drawable.joe_rich_image_from_map);
+                    break;
+                case "west glenmore":
+                    imgHood.setImageResource(R.drawable.west_glenmore_image_from_map);
+                    break;
+                case "downtown":
+                    imgHood.setImageResource(R.drawable.downtown_image_from_map);
+                    break;
+                case "mission":
+                    imgHood.setImageResource(R.drawable.mission_image_from_map);
+                    break;
+                default:
+                    imgHood.setVisibility(View.GONE); //if it doesnt recognize, show nothing
+                    break;
+            }
             String zone = getArguments().getString("selected_zone"); // e.g. "Monday A"
-            String pickupDay = "Monday";
+            String pickupDay = "Monday"; //default entry
             if (zone != null && zone.contains(" ")) {
                 pickupDay = zone.split(" ")[0];
             }
