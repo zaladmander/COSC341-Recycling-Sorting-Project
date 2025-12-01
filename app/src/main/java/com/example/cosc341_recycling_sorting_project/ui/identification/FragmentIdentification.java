@@ -49,6 +49,16 @@ public class FragmentIdentification extends Fragment {
         // Required empty public constructor
     }
 
+    private List<Recyclable> getAllRecyclables() {
+        List<Recyclable> all = new ArrayList<>();
+        for (List<Recyclable> list : dataByCategory.values()) {
+            if (list != null) {
+                all.addAll(list);
+            }
+        }
+        return all;
+    }
+
     private Map<Category, List<Recyclable>> buildData() {
         Map<Category, List<Recyclable>> map = new HashMap<>();
 
@@ -120,9 +130,14 @@ public class FragmentIdentification extends Fragment {
         // buildData: your existing JSON → Map<Category, List<Recyclable>>
         dataByCategory = buildData();
 
+        List<String> categories = new ArrayList<>();
+        categories.add("All");  // index 0
+        for (Category c : Category.values()) {
+            categories.add(c.name()); // or make it pretty if you care
+        }
+
         // Spinner for categories
-        final List<Category> categories = Arrays.asList(Category.values());
-        ArrayAdapter<Category> spinnerAdapter = new ArrayAdapter<>(
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_dropdown_item,
                 categories
@@ -135,18 +150,23 @@ public class FragmentIdentification extends Fragment {
         recycler.setAdapter(gridAdapter);
 
         // initial category
-        if (!categories.isEmpty()) {
-            Category initial = categories.get(0);
-            updateGridForCategory(initial, null);
-        }
+        spinner.setSelection(0); // "All"
+        updateGridForCategory(null, null);
 
         // change category
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-                Category selected = categories.get(position);
                 String query = search.getText() != null ? search.getText().toString() : "";
-                updateGridForCategory(selected, query);
+
+                if (position == 0) {
+                    // "All"
+                    updateGridForCategory(null, query);
+                } else {
+                    // position 1 -> first enum, etc.
+                    Category selected = Category.values()[position - 1];
+                    updateGridForCategory(selected, query);
+                }
             }
 
             @Override public void onNothingSelected(AdapterView<?> parent) { }
@@ -158,32 +178,44 @@ public class FragmentIdentification extends Fragment {
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
             @Override
             public void afterTextChanged(Editable s) {
-                Category selected = (Category) spinner.getSelectedItem();
-                String query = s.toString();
-                updateGridForCategory(selected, query);
+                int position = spinner.getSelectedItemPosition();
+
+                Category category = null;
+                if (position > 0) {
+                    category = Category.values()[position - 1];
+                }
+
+                updateGridForCategory(category, s.toString());
             }
         });
     }
 
-    private void updateGridForCategory(Category category, @Nullable String query) {
-        List<Recyclable> list = dataByCategory.get(category);
-        if (list == null) list = new ArrayList<>();
+    private void updateGridForCategory(@Nullable Category category, @Nullable String query) {
+        List<Recyclable> base;
+
+        if (category == null) {
+            // "All"
+            base = getAllRecyclables();
+        } else {
+            base = dataByCategory.get(category);
+            if (base == null) base = new ArrayList<>();
+        }
 
         query = (query == null) ? "" : query.trim().toLowerCase();
 
+        List<Recyclable> filtered = new ArrayList<>();
         if (query.isEmpty()) {
-            currentList = new ArrayList<>(list);
+            filtered.addAll(base);
         } else {
-            List<Recyclable> filtered = new ArrayList<>();
-            for (Recyclable r : list) {
+            for (Recyclable r : base) {
                 if (r.getName().toLowerCase().contains(query)) {
                     filtered.add(r);
                 }
             }
-            currentList = filtered;
         }
 
-        gridAdapter.submitList(currentList);
+        gridAdapter.submitList(filtered);
     }
+
 
 }
