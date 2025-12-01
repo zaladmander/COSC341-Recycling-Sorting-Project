@@ -9,7 +9,17 @@
         android:id="@+id/nav_identification"
         android:name="com.example.cosc341_recycling_sorting_project.ui.identification.FragmentIdentification"
         android:label="Identify"
-        tools:layout="@layout/fragment_identification" />
+        tools:layout="@layout/fragment_identification">
+        <action
+            android:id="@+id/action_nav_identification_to_recyclableDetailFragment"
+            app:destination="@id/recyclableDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recyclableDetailFragment"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.identification.RecyclableDetailFragment"
+        android:label="Recyclable details"
+        tools:layout="@layout/fragment_recyclable_detail" />
 
     <fragment
         android:id="@+id/nav_pickup"

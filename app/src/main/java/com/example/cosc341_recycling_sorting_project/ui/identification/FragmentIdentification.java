@@ -3,6 +3,8 @@ package com.example.cosc341_recycling_sorting_project.ui.identification;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -121,21 +123,33 @@ public class FragmentIdentification extends Fragment {
         dataByCategory = buildData();
 
         List<String> categories = new ArrayList<>();
-        categories.add("All");  // index 0
+        categories.add("All");
         for (Category c : Category.values()) {
             categories.add(c.name());
         }
 
-        // Spinner for categories
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
                 requireContext(),
-                android.R.layout.simple_spinner_dropdown_item,
+                android.R.layout.simple_spinner_item,
                 categories
         );
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerAdapter);
 
-        // RecyclerView grid
-        gridAdapter = new RecyclableGridAdapter(requireContext());
+        // RecyclerView grid + click handling
+        gridAdapter = new RecyclableGridAdapter(requireContext(), recyclable -> {
+            Bundle args = new Bundle();
+            args.putString("name", recyclable.getName());
+            args.putString("description", recyclable.getDescription());
+            args.putInt("imageResId", recyclable.getImageResId());
+
+            NavController navController =
+                    NavHostFragment.findNavController(FragmentIdentification.this);
+            navController.navigate(
+                    R.id.action_nav_identification_to_recyclableDetailFragment,
+                    args
+            );
+        });
         recycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         recycler.setAdapter(gridAdapter);
 

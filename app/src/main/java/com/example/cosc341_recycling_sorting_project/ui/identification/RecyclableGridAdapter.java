@@ -18,11 +18,17 @@ import java.util.List;
 public class RecyclableGridAdapter
         extends RecyclerView.Adapter<RecyclableGridAdapter.RecyclableViewHolder> {
 
+    public interface OnRecyclableClickListener {
+        void onRecyclableClick(Recyclable recyclable);
+    }
+
     private final Context context;
     private final List<Recyclable> items = new ArrayList<>();
+    private final OnRecyclableClickListener listener;
 
-    public RecyclableGridAdapter(Context context) {
+    public RecyclableGridAdapter(Context context, OnRecyclableClickListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
     public void submitList(List<Recyclable> newItems) {
@@ -46,6 +52,12 @@ public class RecyclableGridAdapter
         Recyclable r = items.get(position);
         holder.name.setText(r.getName());
         holder.image.setImageResource(r.getImageResId());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onRecyclableClick(r);
+            }
+        });
     }
 
     @Override
