@@ -13,14 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.Spinner;
 
 import com.example.cosc341_recycling_sorting_project.R;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,12 +24,9 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +36,6 @@ public class FragmentIdentification extends Fragment {
 
     private Map<Category, List<Recyclable>> dataByCategory;
     private RecyclableGridAdapter gridAdapter;
-    private List<Recyclable> currentList = new ArrayList<>();
 
     public FragmentIdentification() {
         // Required empty public constructor
@@ -82,7 +74,6 @@ public class FragmentIdentification extends Fragment {
                 String imgName = obj.getString("imageResId");      // e.g. "plastic_bag"
                 String catStr = obj.getString("category");    // e.g. "PLASTIC"
 
-                // HERE. RIGHT HERE.
                 int resId = getResources().getIdentifier(
                         imgName,          // "plastic_bag"
                         "drawable",
@@ -127,13 +118,12 @@ public class FragmentIdentification extends Fragment {
         RecyclerView recycler = view.findViewById(R.id.recyclerRecyclables);
         TextInputEditText search = view.findViewById(R.id.editTextSearch);
 
-        // buildData: your existing JSON → Map<Category, List<Recyclable>>
         dataByCategory = buildData();
 
         List<String> categories = new ArrayList<>();
         categories.add("All");  // index 0
         for (Category c : Category.values()) {
-            categories.add(c.name()); // or make it pretty if you care
+            categories.add(c.name());
         }
 
         // Spinner for categories
