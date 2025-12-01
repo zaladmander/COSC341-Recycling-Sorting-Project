@@ -137,7 +137,7 @@ public class FragmentScheduleResult extends Fragment {
                     imgHood.setImageResource(R.drawable.mission_image_from_map);
                     break;
                 default:
-                    imgHood.setVisibility(View.GONE); //if it doesnt recognize, show nothing
+                    imgHood.setImageResource(0); //if it doesnt recognize, show nothing
                     break;
             }
             String zone = getArguments().getString("selected_zone"); // e.g. "Monday A"
