@@ -10,4 +10,5 @@ public class DataPolicyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_policy);
     }
+
 }
