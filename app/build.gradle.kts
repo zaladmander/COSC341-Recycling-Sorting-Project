@@ -47,4 +47,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.google.code.gson:gson:2.13.2")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }
