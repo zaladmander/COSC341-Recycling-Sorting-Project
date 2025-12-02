@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#F7F0FF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Scrollable content area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="50dp"
+        android:paddingLeft="24dp"
+        android:paddingBottom="24dp"
+        android:paddingRight="24dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_policy_card">
+
+            <TextView
+                android:text="Why we collect your data?"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:paddingBottom="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Section 1 -->
+
+            <TextView
+                android:text="1. Location Access"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="We use your location only to show nearby recycling and drop-off depots. This helps you find the closest place for specific items (like batteries, glass, or e-waste). Your location is never shared or stored permanently."
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Section 2 -->
+            <TextView
+                android:text="2. Photos (Optional)"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="If you upload a photo, we only use it to identify the material type and suggest the correct recycling bin. Photos are processed for classification and not used for any other purpose."
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Section 3 -->
+            <TextView
+                android:text="3. Basic Profile Information"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="If you choose to add your name or email, it helps us keep a simple recycling history and improve tips. You can still use the app without creating an account."
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Section 4 -->
+            <TextView
+                android:text="4. Improving the App"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="We collect anonymous usage data (like how often a page is opened) to understand which features are helpful and plan updates. All information is used only to support your recycling experience and sustainability goals."
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="\nWe respect your privacy and will never sell or share your personal data."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
