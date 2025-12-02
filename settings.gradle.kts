@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "COSC341-Recycling-Sorting-Project"
+rootProject.name = "Task5_Project"
 include(":app")
  

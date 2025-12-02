@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cosc341_recycling_sorting_project"
+    namespace = "com.example.task5_project"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.cosc341_recycling_sorting_project"
+        applicationId = "com.example.task5_project"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -29,20 +29,16 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.navigation.fragment)
-    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

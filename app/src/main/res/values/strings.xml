@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">COSC341-Recycling-Sorting-Project</string>
-    <string name="identify">Identify</string>
-    <string name="schedule">Schedule</string>
-    <string name="stats">Stats</string>
-    <string name="quiz">Quiz</string>
-    <string name="depots">Depots</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_title">Location access for recycling map</string>
+    <string name="permission_message">Would you allow us to access your location?</string>
+    <string name="btn_allow_map">Allow &amp; Open Map</string>
+    <string name="btn_no_thanks">No thanks (see list)</string>
+    <string name="app_name">Waste</string>
+    <string name="data_policy_link">Read our Data Policy</string>
+    <string name="data_policy_info"> We only use your location while the app is open to show nearby recycling drop-off locations. We do not store your exact location or share it with third parties. Photos are used only for prototyping and are not uploaded to external servers. </string>
 </resources>
