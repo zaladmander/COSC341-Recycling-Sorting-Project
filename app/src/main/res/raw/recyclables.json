@@ -1,8 +1,230 @@
 [
   {
-    "name": "Plastic bag",
-    "description": "Film plastic bags should be taken to drop-off depots, not curbside.",
-    "imageResId": "plastic_bag",
+    "name": "Newspapers and flyers",
+    "description": "Clean newspapers, community papers and advertising flyers. Recycle loose with other paper.",
+    "imageResId": "newspapers_flyers",
+    "category": "PAPER"
+  },
+  {
+    "name": "Magazines and catalogues",
+    "description": "All types of magazines and catalogues, including glossy ones.",
+    "imageResId": "magazines_catalogues",
+    "category": "PAPER"
+  },
+  {
+    "name": "Telephone books and directories",
+    "description": "Phone books and similar paper directories. Hardcover books should be donated instead.",
+    "imageResId": "telephone_books",
+    "category": "PAPER"
+  },
+  {
+    "name": "Office paper and envelopes",
+    "description": "Writing paper, printer paper, notepads, plain and window envelopes. Shredded paper should be contained inside a paper bag or box.",
+    "imageResId": "office_paper_envelopes",
+    "category": "PAPER"
+  },
+  {
+    "name": "Paper gift wrap and cards",
+    "description": "Non-foil paper gift wrap and greeting cards without glitter or plastic parts.",
+    "imageResId": "paper_giftwrap_cards",
+    "category": "PAPER"
+  },
+  {
+    "name": "Paper bags",
+    "description": "Kraft grocery bags, paper prescription bags and paper envelopes that are not plastic or foil lined.",
+    "imageResId": "paper_bags",
+    "category": "PAPER"
+  },
+  {
+    "name": "Corrugated cardboard boxes",
+    "description": "Shipping boxes, moving boxes and pizza boxes (with minimal food residue). Flatten large boxes for collection.",
+    "imageResId": "corrugated_cardboard",
+    "category": "CARDBOARD"
+  },
+  {
+    "name": "Boxboard cartons",
+    "description": "Cereal boxes, tissue boxes, cracker boxes and other thin cardboard packaging. Remove plastic liners.",
+    "imageResId": "boxboard_cartons",
+    "category": "CARDBOARD"
+  },
+  {
+    "name": "Moulded paper packaging",
+    "description": "Paper egg cartons, molded beverage trays and paper garden pots that are clean and empty.",
+    "imageResId": "moulded_paper_packaging",
+    "category": "CARDBOARD"
+  },
+  {
+    "name": "Multi-layer paper food bags",
+    "description": "Paper bags for flour, sugar and similar dry foods without foil or plastic layers.",
+    "imageResId": "multi_layer_paper_bags",
+    "category": "CARDBOARD"
+  },
+
+  {
+    "name": "Paper cups and lids",
+    "description": "Disposable paper cups for hot or cold drinks. Empty and rinse. Lids go with container recycling; straws are garbage.",
+    "imageResId": "paper_cups_lids",
+    "category": "PAPER"
+  },
+  {
+    "name": "Gable-top drink cartons",
+    "description": "Milk, cream and egg substitute cartons. Empty and rinse before recycling.",
+    "imageResId": "gable_top_cartons",
+    "category": "CARDBOARD"
+  },
+  {
+    "name": "Aseptic soup and drink cartons",
+    "description": "Shelf-stable cartons for soup, broth and sauces. Empty and rinse.",
+    "imageResId": "aseptic_cartons",
+    "category": "CARDBOARD"
+  },
+  {
+    "name": "Frozen dessert cartons",
+    "description": "Ice cream and frozen yogurt boxes. Empty and quickly scrape out food before recycling.",
+    "imageResId": "frozen_dessert_cartons",
+    "category": "CARDBOARD"
+  },
+
+  {
+    "name": "Plastic jugs with screw tops",
+    "description": "Plastic jugs for milk, cooking oil, detergent, cleaners and windshield washer fluid. Empty and rinse.",
+    "imageResId": "plastic_jugs",
     "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic bottles",
+    "description": "Plastic bottles for food, dish soap, mouthwash, shampoo, conditioner and other household liquids. Empty and rinse; labels are fine.",
+    "imageResId": "plastic_bottles",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic jars and tubs",
+    "description": "Plastic jars and tubs for peanut butter, jam, nuts, spreads, yogurt, cottage cheese, sour cream and ice cream. Empty and rinse.",
+    "imageResId": "plastic_jars_tubs",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic clamshells",
+    "description": "Clear hinged or lidded containers for baked goods, produce, fruit and eggs. Empty and rinse thoroughly.",
+    "imageResId": "plastic_clamshells",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic trays and lids",
+    "description": "Rigid plastic trays and tops for deli chicken, single-serve meals and hardware. Empty and rinse; no foam trays.",
+    "imageResId": "plastic_trays",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Microwavable plastic bowls and cups",
+    "description": "Plastic bowls and cups for single-serve soups and ready meals. Remove lids and recycle both if clean.",
+    "imageResId": "microwave_bowls",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic cold drink cups",
+    "description": "Take-out beverage cups made of rigid plastic. Empty and rinse; separate straws to garbage.",
+    "imageResId": "plastic_cold_cups",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic garden pots and trays",
+    "description": "Plastic plant pots and seedling trays. Remove soil and plant material first.",
+    "imageResId": "plastic_garden_pots",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Plastic pails under 25L",
+    "description": "Pails for detergent, ice cream or pet food smaller than 25 L. Empty and rinse; remove metal handles if possible.",
+    "imageResId": "plastic_pails",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Non-durable plastic food containers",
+    "description": "Lightweight plastic lunch containers and similar single-use food storage. Must be clean.",
+    "imageResId": "non_durable_food_containers",
+    "category": "PLASTIC"
+  },
+
+  {
+    "name": "Plastic bags and overwrap (depot only)",
+    "description": "Soft plastic bags for groceries, bread, produce, dry bulk foods and most frozen vegetables, plus outer wrap for diapers, flat-packed cans and large packages. Return clean and empty to a depot; not accepted in curbside carts.",
+    "imageResId": "plastic_bag_overwrap",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Stand-up and zipper pouches (depot only)",
+    "description": "Crinkly or stand-up pouches for frozen fruit, deli meats, grated cheese, snacks and detergents. Take clean pouches to a flexible-packaging depot.",
+    "imageResId": "standup_zipper_pouches",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Crinkly snack bags and wrappers (depot only)",
+    "description": "Chip bags, candy bags and similar crinkly wrappers. Depot only; keep them out of curbside paper and container streams.",
+    "imageResId": "crinkly_snack_bags",
+    "category": "PLASTIC"
+  },
+  {
+    "name": "Bubble wrap and plastic air pillows (depot only)",
+    "description": "Flexible plastic protective packaging from parcels, including bubble wrap and air cushions. Return to a depot with other flexible plastics.",
+    "imageResId": "bubble_wrap",
+    "category": "PLASTIC"
+  },
+
+  {
+    "name": "Non-deposit glass bottles and jars",
+    "description": "Clear or coloured glass food jars and bottles that do not carry a beverage deposit. Empty, rinse and remove lids.",
+    "imageResId": "glass_jars_bottles",
+    "category": "GLASS"
+  },
+
+  {
+    "name": "White foam food trays and cups (depot only)",
+    "description": "Clean foam meat trays, egg cartons, take-out containers, cups and bowls. Remove absorbent pads and food; sort by white vs coloured at the depot.",
+    "imageResId": "white_foam_trays",
+    "category": "FOAM"
+  },
+  {
+    "name": "Coloured foam food trays and cups (depot only)",
+    "description": "Coloured foam take-out containers, meat trays and cups that are clean and dry. Depot only.",
+    "imageResId": "coloured_foam_trays",
+    "category": "FOAM"
+  },
+  {
+    "name": "Foam cushion packaging (depot only)",
+    "description": "Rigid foam blocks and shapes used to protect electronics and small appliances in boxes. Remove tape and labels; recycle at a depot.",
+    "imageResId": "foam_cushion_packaging",
+    "category": "FOAM"
+  },
+
+  {
+    "name": "Steel food cans and lids",
+    "description": "Steel cans for soup, vegetables, beans and pet food, plus cookie, tea and chocolate tins. Empty and rinse; labels can stay on.",
+    "imageResId": "steel_food_cans",
+    "category": "METAL"
+  },
+  {
+    "name": "Spiral wound cans and lids",
+    "description": "Metal-ended cans for frozen juice concentrate, potato chips, coffee and baby formula. Empty completely before recycling.",
+    "imageResId": "spiral_wound_cans",
+    "category": "METAL"
+  },
+  {
+    "name": "Aluminum food cans",
+    "description": "Aluminum cans and lids for seafood, pet food and similar items. Empty and rinse.",
+    "imageResId": "aluminum_cans",
+    "category": "METAL"
+  },
+  {
+    "name": "Aluminum foil and trays",
+    "description": "Clean aluminum foil, pie plates and take-out trays. Rinse off food before recycling.",
+    "imageResId": "aluminum_foil_trays",
+    "category": "METAL"
+  },
+  {
+    "name": "Empty aerosol cans",
+    "description": "Completely empty aerosol cans for food, deodorant, hairspray, shaving cream and air freshener. Return partially full or paint aerosols to a hazardous waste program.",
+    "imageResId": "aerosol_cans",
+    "category": "METAL"
   }
 ]

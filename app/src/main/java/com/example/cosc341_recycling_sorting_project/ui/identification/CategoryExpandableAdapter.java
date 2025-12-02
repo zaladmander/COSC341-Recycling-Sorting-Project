@@ -35,7 +35,8 @@ public class CategoryExpandableAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
         Category cat = categories.get(groupPosition);
-        return items.get(cat).size();
+        List<Recyclable> recyclables = items.get(cat);
+        return recyclables == null ? 0 : recyclables.size();
     }
 
     @Override
@@ -45,7 +46,12 @@ public class CategoryExpandableAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return items.get(categories.get(groupPosition)).get(childPosition);
+        Category category = categories.get(groupPosition);
+        List<Recyclable> recyclables = items.get(category);
+        if (recyclables == null || childPosition >= recyclables.size()) {
+            return null;
+        }
+        return recyclables.get(childPosition);
     }
 
     @Override

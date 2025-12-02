@@ -3,18 +3,22 @@ package com.example.cosc341_recycling_sorting_project.ui.identification;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.Spinner;
 
 import com.example.cosc341_recycling_sorting_project.R;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,20 +26,31 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 public class FragmentIdentification extends Fragment {
+
+    private Map<Category, List<Recyclable>> dataByCategory;
+    private RecyclableGridAdapter gridAdapter;
+
     public FragmentIdentification() {
         // Required empty public constructor
+    }
+
+    private List<Recyclable> getAllRecyclables() {
+        List<Recyclable> all = new ArrayList<>();
+        for (List<Recyclable> list : dataByCategory.values()) {
+            if (list != null) {
+                all.addAll(list);
+            }
+        }
+        return all;
     }
 
     private Map<Category, List<Recyclable>> buildData() {
@@ -61,7 +76,6 @@ public class FragmentIdentification extends Fragment {
                 String imgName = obj.getString("imageResId");      // e.g. "plastic_bag"
                 String catStr = obj.getString("category");    // e.g. "PLASTIC"
 
-                // HERE. RIGHT HERE.
                 int resId = getResources().getIdentifier(
                         imgName,          // "plastic_bag"
                         "drawable",
@@ -102,15 +116,110 @@ public class FragmentIdentification extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ExpandableListView accordion = view.findViewById(R.id.expandableCategories);
+        Spinner spinner = view.findViewById(R.id.spinnerCategory);
+        RecyclerView recycler = view.findViewById(R.id.recyclerRecyclables);
+        TextInputEditText search = view.findViewById(R.id.editTextSearch);
 
-        List<Category> groups = Arrays.asList(Category.values());
-        Map<Category, List<Recyclable>> data = buildData();
+        dataByCategory = buildData();
 
-        CategoryExpandableAdapter adapter =
-                new CategoryExpandableAdapter(requireContext(), groups, data);
+        List<String> categories = new ArrayList<>();
+        categories.add("All");
+        for (Category c : Category.values()) {
+            categories.add(c.name());
+        }
 
-        accordion.setAdapter(adapter);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                categories
+        );
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+
+        // RecyclerView grid + click handling
+        gridAdapter = new RecyclableGridAdapter(requireContext(), recyclable -> {
+            Bundle args = new Bundle();
+            args.putString("name", recyclable.getName());
+            args.putString("description", recyclable.getDescription());
+            args.putInt("imageResId", recyclable.getImageResId());
+
+            NavController navController =
+                    NavHostFragment.findNavController(FragmentIdentification.this);
+            navController.navigate(
+                    R.id.action_nav_identification_to_recyclableDetailFragment,
+                    args
+            );
+        });
+        recycler.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        recycler.setAdapter(gridAdapter);
+
+        // initial category
+        spinner.setSelection(0); // "All"
+        updateGridForCategory(null, null);
+
+        // change category
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+                String query = search.getText() != null ? search.getText().toString() : "";
+
+                if (position == 0) {
+                    // "All"
+                    updateGridForCategory(null, query);
+                } else {
+                    // position 1 -> first enum, etc.
+                    Category selected = Category.values()[position - 1];
+                    updateGridForCategory(selected, query);
+                }
+            }
+
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
+        // search filter
+        search.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            @Override
+            public void afterTextChanged(Editable s) {
+                int position = spinner.getSelectedItemPosition();
+
+                Category category = null;
+                if (position > 0) {
+                    category = Category.values()[position - 1];
+                }
+
+                updateGridForCategory(category, s.toString());
+            }
+        });
     }
+
+    private void updateGridForCategory(@Nullable Category category, @Nullable String query) {
+        List<Recyclable> base;
+
+        if (category == null) {
+            // "All"
+            base = getAllRecyclables();
+        } else {
+            base = dataByCategory.get(category);
+            if (base == null) base = new ArrayList<>();
+        }
+
+        query = (query == null) ? "" : query.trim().toLowerCase();
+
+        List<Recyclable> filtered = new ArrayList<>();
+        if (query.isEmpty()) {
+            filtered.addAll(base);
+        } else {
+            for (Recyclable r : base) {
+                if (r.getName().toLowerCase().contains(query)) {
+                    filtered.add(r);
+                }
+            }
+        }
+
+        gridAdapter.submitList(filtered);
+    }
+
 
 }
