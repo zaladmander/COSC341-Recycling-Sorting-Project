@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.net.Uri;
 
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,7 +88,6 @@ public class FragmentQuiz extends Fragment {
     private Button btnReattempt;
     private TextView link1, link2, link3, link4, link5;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -114,15 +115,16 @@ public class FragmentQuiz extends Fragment {
         setupStartScreen();
         setupListeners();
 
-        layoutResult = view.findViewById(R.id.layoutResult);
-        tvScoreResult = view.findViewById(R.id.tvScore);
-        btnReattempt = view.findViewById(R.id.btnReattempt);
+        layoutResult   = view.findViewById(R.id.layoutResult);
+        tvScoreResult  = view.findViewById(R.id.tvScore);
+        btnReattempt   = view.findViewById(R.id.btnReattempt);
 
         link1 = view.findViewById(R.id.link1);
         link2 = view.findViewById(R.id.link2);
         link3 = view.findViewById(R.id.link3);
         link4 = view.findViewById(R.id.link4);
         link5 = view.findViewById(R.id.link5);
+
         link1.setText("RDCO Recycling Overview");
         link1.setOnClickListener(v -> openUrl("https://www.rdco.com/en/living-here/recycling.aspx"));
 
@@ -146,7 +148,6 @@ public class FragmentQuiz extends Fragment {
         Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browser);
     }
-
 
     private void setupStartScreen() {
         // Spinner options: 1 to 10
@@ -187,7 +188,6 @@ public class FragmentQuiz extends Fragment {
             }
         });
 
-
         // Submit answer
         btnSubmit.setOnClickListener(v -> handleSubmit());
 
@@ -200,8 +200,8 @@ public class FragmentQuiz extends Fragment {
                 spinnerQuestionCount.getSelectedItem().toString()
         );
 
-        List<Question> pool =
-                QuestionBank.forCategory(QuestionBank.KELOWNA_RECYCLING);
+        // Load questions from string resources instead of hard-coded map
+        List<Question> pool = QuestionBank.loadFromXml(requireContext());
 
         if (pool.isEmpty()) {
             Toast.makeText(getContext(),
@@ -243,6 +243,12 @@ public class FragmentQuiz extends Fragment {
         rb3.setEnabled(true);
         rb4.setEnabled(true);
 
+        // reset text colors in case previous question highlighted one in blue
+        rb1.setTextColor(Color.BLACK);
+        rb2.setTextColor(Color.BLACK);
+        rb3.setTextColor(Color.BLACK);
+        rb4.setTextColor(Color.BLACK);
+
         btnSubmit.setEnabled(false);           // greyed out by default
         tvFeedback.setVisibility(View.GONE);   // hide message
         tvFeedback.setText("");
@@ -265,15 +271,37 @@ public class FragmentQuiz extends Fragment {
 
         hasSubmittedCurrent = true;
 
+        // Figure out which RadioButton is the correct one
+        RadioButton correctRb =
+                (q.correctIndex == 0) ? rb1 :
+                        (q.correctIndex == 1) ? rb2 :
+                                (q.correctIndex == 2) ? rb3 : rb4;
+
         if (correct) {
+            // Correct answer case
             score++;
-            tvFeedback.setText("Good job! Correct answer. \uD83D\uDC4F");
+            tvFeedback.setText("Good job! Correct answer. 👏");
             tvFeedback.setTextColor(Color.parseColor("#2E7D32")); // green
+
+            // Also highlight correct answer in blue when right
+            correctRb.setTextColor(Color.parseColor("#1A73E8"));
         } else {
-            // basic wrong-answer message (you can customise per question if you want)
+            // Wrong answer case: show correct answer + link
             String correctText = q.options.get(q.correctIndex);
-            tvFeedback.setText("Oops! Wrong answer.\nThe correct answer is: " + correctText);
+            String referenceUrl = q.referenceUrl;
+
+            String html = "Oops! Wrong answer.<br>" +
+                    "The correct answer is: <b><font color='#1A73E8'>" +
+                    correctText +
+                    "</font></b><br><br>" +
+                    "<a href='" + referenceUrl + "'>Learn more here</a>";
+
+            tvFeedback.setText(Html.fromHtml(html));
+            tvFeedback.setMovementMethod(LinkMovementMethod.getInstance());
             tvFeedback.setTextColor(Color.parseColor("#C62828")); // red
+
+            // Highlight the correct option in blue
+            correctRb.setTextColor(Color.parseColor("#1A73E8"));
         }
 
         tvFeedback.setVisibility(View.VISIBLE);
@@ -286,12 +314,10 @@ public class FragmentQuiz extends Fragment {
 
         // disable submit
         btnSubmit.setEnabled(false);
-
         btnSubmit.setBackgroundTintList(
                 getResources().getColorStateList(android.R.color.darker_gray)
         );
         btnSubmit.setTextColor(Color.BLACK);
-
 
         // show Next/Finish button
         btnNext.setVisibility(View.VISIBLE);
@@ -331,5 +357,4 @@ public class FragmentQuiz extends Fragment {
             layoutStart.setVisibility(View.VISIBLE);
         });
     }
-
 }
