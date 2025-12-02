@@ -1,8 +1,11 @@
 package com.example.cosc341_recycling_sorting_project.ui.stats;
 
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +13,15 @@ import android.view.ViewGroup;
 
 import com.example.cosc341_recycling_sorting_project.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentStats#newInstance} factory method to
- * create an instance of this fragment.
- */
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+
 public class FragmentStats extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -30,15 +33,6 @@ public class FragmentStats extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentStats.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentStats newInstance(String param1, String param2) {
         FragmentStats fragment = new FragmentStats();
         Bundle args = new Bundle();
@@ -62,5 +56,36 @@ public class FragmentStats extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_stats, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        // References to views
+        TextView textGreeting = view.findViewById(R.id.text_greeting);
+        TextView textStreakTitle = view.findViewById(R.id.text_streak_title);
+        TextView textStreakDesc = view.findViewById(R.id.text_streak_desc);
+        Button btnWeeklySummary = view.findViewById(R.id.btn_weekly_summary);
+        Button btnCommunity = view.findViewById(R.id.btn_community);
+
+        // Hard coded display content
+        textGreeting.setText("Hello, User!");
+        textStreakTitle.setText("3-Week Recycling Streak");
+        textStreakDesc.setText("1 week to next tier");
+
+        // Button click behavior
+
+        btnWeeklySummary.setOnClickListener(v -> {
+            // TODO: navigate to Weekly Summary fragment
+             NavHostFragment.findNavController(FragmentStats.this)
+                 .navigate(R.id.action_fragmentStats_to_weeklySummary);
+        });
+
+        btnCommunity.setOnClickListener(v -> {
+            // TODO: navigate to Community fragment
+            NavHostFragment.findNavController(FragmentStats.this)
+                    .navigate(R.id.action_fragmentStats_to_community);
+        });
+
     }
 }

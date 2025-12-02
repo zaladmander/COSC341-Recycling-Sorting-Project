@@ -5,6 +5,139 @@
     <string name="stats">Stats</string>
     <string name="quiz">Quiz</string>
     <string name="depots">Depots</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--for scheduling page 1 [2.0]-->
+    <string-array name="neighbourhood_options">
+        <item>Ellison</item>
+        <item>Rutland/East-Glenmore</item>
+        <item>Joe Rich</item>
+        <item>West Glenmore</item>
+        <item>Downtown</item>
+        <item>Mission</item>
+    </string-array>
+    <!-- Quiz questions -->
+    <string-array name="quiz_questions">
+        <item>Which of the following items should not be placed loose in your blue-lidded curbside recycling cart in Kelowna?</item>
+        <item>In Kelowna’s curbside program, how should materials be placed in the blue recycling cart?</item>
+        <item>What should you do with non-deposit glass bottles and jars from your home in Kelowna?</item>
+        <item>Which of the following is allowed in your curbside yard-waste cart?</item>
+        <item>Which item must stay out of the yard-waste cart under RDCO rules?</item>
+        <item>If you have more garbage than fits in your cart with the lid closed, what does the Tag-a-Bag program allow?</item>
+        <item>If your curbside carts are missed on collection day in Kelowna, who should you contact first?</item>
+        <item>Which statement about filling your carts follows RDCO rules?</item>
+        <item>Which material should not go in the blue recycling cart and instead go to special disposal?</item>
+        <item>Which statement best describes yard-waste collection for curbside homes in the Central Okanagan (including Kelowna)?</item>
+    </string-array>
+
+    <!-- Options for each question -->
+    <string-array name="quiz_q1_options">
+        <item>Clean and empty plastic container</item>
+        <item>Flattened cardboard box</item>
+        <item>Styrofoam (white polystyrene)</item>
+        <item>Rinsed tin can</item>
+    </string-array>
+
+    <string-array name="quiz_q2_options">
+        <item>In tied plastic garbage bags</item>
+        <item>Loose and unbagged</item>
+        <item>Packed into cardboard boxes only</item>
+        <item>Only in clear recycling bags</item>
+    </string-array>
+
+    <string-array name="quiz_q3_options">
+        <item>Put them in the blue recycling cart</item>
+        <item>Put them in the garbage cart</item>
+        <item>Take them to a recycling depot</item>
+        <item>Leave them beside the cart in a cardboard box</item>
+    </string-array>
+
+    <string-array name="quiz_q4_options">
+        <item>Grass clippings</item>
+        <item>Plastic bags filled with leaves</item>
+        <item>Dirt and rocks</item>
+        <item>Kitchen food scraps</item>
+    </string-array>
+
+    <string-array name="quiz_q5_options">
+        <item>Small branches under 5 cm in diameter</item>
+        <item>Leaves</item>
+        <item>Pumpkins</item>
+        <item>Animal feces or cat litter</item>
+    </string-array>
+
+    <string-array name="quiz_q6_options">
+        <item>Put unlimited extra bags beside your cart</item>
+        <item>Put up to two extra bags with paid Tag-a-Bag stickers</item>
+        <item>Leave loose garbage on top of the cart</item>
+        <item>Put extra garbage into the blue recycling cart</item>
+    </string-array>
+
+    <string-array name="quiz_q7_options">
+        <item>City of Kelowna front desk</item>
+        <item>Environmental 360 Solutions (E360S)</item>
+        <item>RCMP non-emergency line</item>
+        <item>Recycle BC head office</item>
+    </string-array>
+
+    <string-array name="quiz_q8_options">
+        <item>Carts can be overfilled as long as the driver can still tip them</item>
+        <item>Only the garbage cart needs the lid closed; recycling can overflow</item>
+        <item>All material must fit inside the cart so the lid can fully close</item>
+        <item>Yard-waste carts may be piled higher than the rim</item>
+    </string-array>
+
+    <string-array name="quiz_q9_options">
+        <item>Clean paper and cardboard</item>
+        <item>Plastic containers from food products</item>
+        <item>Electronics or small appliances</item>
+        <item>Metal food cans</item>
+    </string-array>
+
+    <string-array name="quiz_q10_options">
+        <item>Yard waste is picked up every week, all year</item>
+        <item>Yard waste is only accepted at depots, never at the curb</item>
+        <item>Yard waste is collected March through December, on alternating weeks with recycling</item>
+        <item>Yard waste is only collected during July</item>
+    </string-array>
+
+    <!-- Correct answer indexes, matching original QuestionBank indices -->
+    <string-array name="quiz_correct_indexes">
+        <item>2</item> <!-- Q1 -->
+        <item>1</item> <!-- Q2 -->
+        <item>2</item> <!-- Q3 -->
+        <item>0</item> <!-- Q4 -->
+        <item>3</item> <!-- Q5 -->
+        <item>1</item> <!-- Q6 -->
+        <item>1</item> <!-- Q7 -->
+        <item>2</item> <!-- Q8 -->
+        <item>2</item> <!-- Q9 -->
+        <item>2</item> <!-- Q10 -->
+    </string-array>
+
+    <!-- Per-question reference links -->
+    <string-array name="quiz_reference_links">
+        <!-- Q1: what can be recycled / Styrofoam -->
+        <item>https://www.rdco.com/en/living-here/resources/Documents/What-Can-Be-Recycled-List.pdf</item>
+        <!-- Q2: cart usage -->
+        <item>https://www.rdco.com/en/living-here/curbside-carts.aspx</item>
+        <!-- Q3: glass disposal -->
+        <item>https://www.rdco.com/en/living-here/recycling.aspx</item>
+        <!-- Q4: what’s allowed in yard-waste -->
+        <item>https://www.rdco.com/en/living-here/yard-waste.aspx</item>
+        <!-- Q5: stays out of yard-waste -->
+        <item>https://www.rdco.com/en/living-here/yard-waste.aspx</item>
+        <!-- Q6: Tag-a-Bag -->
+        <item>https://www.rdco.com/en/living-here/curbside-carts.aspx</item>
+        <!-- Q7: missed collection -->
+        <item>https://www.rdco.com/en/living-here/waste-and-recycling.aspx</item>
+        <!-- Q8: lids must close -->
+        <item>https://www.rdco.com/en/living-here/curbside-carts.aspx</item>
+        <!-- Q9: electronics special disposal -->
+        <item>https://www.rdco.com/en/living-here/waste-and-recycling.aspx</item>
+        <!-- Q10: yard-waste schedule -->
+        <item>https://www.rdco.com/en/living-here/yard-waste.aspx</item>
+    </string-array>
+
 </resources>

@@ -9,19 +9,83 @@
         android:id="@+id/nav_identification"
         android:name="com.example.cosc341_recycling_sorting_project.ui.identification.FragmentIdentification"
         android:label="Identify"
-        tools:layout="@layout/fragment_identification" />
+        tools:layout="@layout/fragment_identification">
+        <action
+            android:id="@+id/action_nav_identification_to_recyclableDetailFragment"
+            app:destination="@id/recyclableDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recyclableDetailFragment"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.identification.RecyclableDetailFragment"
+        android:label="Recyclable details"
+        tools:layout="@layout/fragment_recyclable_detail" />
 
     <fragment
         android:id="@+id/nav_pickup"
-        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.FragmentDepots"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.schedule.FragmentSchedule"
         android:label="Schedule"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule">
+
+    <!-- Add an action to go to the details screen -->
+    <action
+        android:id="@+id/action_schedule_to_scheduleDetails"
+        app:destination="@id/nav_schedule_result" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_schedule_result"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.schedule.FragmentScheduleResult"
+        android:label="Schedule Results"
+        tools:layout="@layout/fragment_schedule_result">
+
+        <action
+            android:id="@+id/action_schedule_result_to_full"
+            app:destination="@+id/nav_schedule_full"
+            />
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/nav_schedule_full"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.schedule.FragmentScheduleFull"
+        android:label="Full Schedule"
+        tools:layout="@layout/fragment_schedule_full">
+
+        <action
+            android:id="@+id/action_schedule_full_to_pickup"
+            app:destination="@id/nav_pickup" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_stats"
         android:name="com.example.cosc341_recycling_sorting_project.ui.stats.FragmentStats"
         android:label="Stats"
-        tools:layout="@layout/fragment_stats" />
+        tools:layout="@layout/fragment_stats" >
+            <action
+                android:id="@+id/action_fragmentStats_to_weeklySummary"
+                app:destination="@id/weeklySummaryFragment" />
+            <action
+                android:id="@+id/action_fragmentStats_to_community"
+                app:destination="@id/communityFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weeklySummaryFragment"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.stats.WeeklySummaryFragment"
+        android:label="WeeklySummary"
+        tools:layout="@layout/fragment_weekly_summary" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.stats.CommunityFragment"
+        android:label="Community"
+        tools:layout="@layout/fragment_community" >
+    </fragment>
 
     <fragment
         android:id="@+id/nav_quiz"

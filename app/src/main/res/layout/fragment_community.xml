@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/community_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".ui.stats.CommunityFragment">
+
+    <TextView
+        android:id="@+id/tv_community_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Community"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- City total kgs card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_city_total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardUseCompatPadding="true"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_community_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/tv_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City of Kelowna - Month of November, 2025"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:id="@+id/tv_city_kgs_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total kg CO₂ prevented:"
+                android:textSize="24sp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/tv_city_kgs_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12,345"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Top recyclers label -->
+    <TextView
+        android:id="@+id/tv_top_recyclers_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Top Recyclers"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/card_city_total"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Horizontal list of top recyclers -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_top_recyclers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_top_recyclers_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Trending header (click to expand/collapse) -->
+    <LinearLayout
+        android:id="@+id/layout_trending_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/rv_top_recyclers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tv_trending_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Trending Searches"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/iv_trending_chev"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/arrow_down_float"
+            app:tint="@android:color/darker_gray" />
+    </LinearLayout>
+
+    <!-- Collapsible container for the trending RecyclerView -->
+    <!-- Give it a fixed maximum height so the RecyclerView scrolls internally -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_trending_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/layout_trending_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_weekly_tip">
+
+        <!-- use a fixed height so it's scrollable; 220dp is a reasonable default -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_trending"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:nestedScrollingEnabled="true" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- Weekly tip at bottom -->
+    <TextView
+        android:id="@+id/tv_weekly_tip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tip: Rinse containers to avoid contamination."
+        android:textSize="14sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
