@@ -14,6 +14,10 @@ public class Recyclable {
         this.category = category;
     }
 
+    public Recyclable(String name, String description) {
+        this(name, description, -1, null);
+    }
+
     public String getName() {
         return name;
     }
