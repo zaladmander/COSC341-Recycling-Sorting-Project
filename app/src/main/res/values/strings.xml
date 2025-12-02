@@ -5,9 +5,18 @@
     <string name="stats">Stats</string>
     <string name="quiz">Quiz</string>
     <string name="depots">Depots</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--for scheduling page 1 [2.0]-->
+    <string-array name="neighbourhood_options">
+        <item>Ellison</item>
+        <item>Rutland/East-Glenmore</item>
+        <item>Joe Rich</item>
+        <item>West Glenmore</item>
+        <item>Downtown</item>
+        <item>Mission</item>
+    </string-array>
     <!-- Quiz questions -->
     <string-array name="quiz_questions">
         <item>Which of the following items should not be placed loose in your blue-lidded curbside recycling cart in Kelowna?</item>
