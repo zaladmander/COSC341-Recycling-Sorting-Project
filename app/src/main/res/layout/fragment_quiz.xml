@@ -5,10 +5,323 @@
     android:layout_height="match_parent"
     tools:context=".ui.quiz.FragmentQuiz">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
+
+    <!-- START SCREEN -->
+    <LinearLayout
+        android:id="@+id/layoutStart"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recycling Quiz"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*Take this short quiz to test your recycling knowledge"
+            android:textSize="14sp"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Graphic (recycle icon + bin) -->
+        <ImageView
+            android:id="@+id/imgQuizGraphic"
+            android:layout_width="220dp"
+            android:layout_height="160dp"
+            android:src="@drawable/recyclingbin"
+            android:contentDescription="Recycling graphic"
+            android:adjustViewBounds="true"
+            android:layout_marginBottom="40dp" />
+
+             <!-- Number of questions row -->
+        <LinearLayout
+            android:id="@+id/layoutQuestionRow"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/tvNumQuestionsLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Number of Questions"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinnerQuestionCount"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Start button -->
+        <Button
+            android:id="@+id/btnStartQuiz"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Start Quiz"
+            android:textAllCaps="false"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="#6C41C9"
+            android:textColor="@android:color/white" />
+
+        <!-- Push the footer to bottom-ish -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Footer -->
+        <TextView
+            android:id="@+id/tvLastUpdated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*Last updated Oct 2025"
+            android:textSize="12sp"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+
+    <!-- QUIZ QUESTION SCREEN -->
+    <ScrollView
+        android:id="@+id/layoutQuiz"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvQuestionHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question 1"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:id="@+id/tvQuestionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Question text"
+                android:textSize="16sp"
+                android:layout_marginBottom="20dp" />
+
+            <RadioGroup
+                android:id="@+id/rgOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
+
+                <RadioButton
+                    android:id="@+id/rbOption1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/rbOption2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/rbOption3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/rbOption4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+            <!-- Submit button (grey by default, enabled after selection) -->
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Submit answer"
+                android:textAllCaps="false"
+                android:enabled="false"
+                android:backgroundTint="#BDBDBD"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Feedback message (correct / incorrect) -->
+            <TextView
+                android:id="@+id/tvFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColorLink="#1A73E8"/>
+
+            <!-- Next Question button -->
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Next Question"
+                android:textAllCaps="false"
+                android:backgroundTint="#6C41C9"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ================== RESULT SCREEN ================== -->
+    <ScrollView
+        android:id="@+id/layoutResult"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/resultTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling Quiz"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Same image as start -->
+            <ImageView
+                android:id="@+id/resultImage"
+                android:layout_width="220dp"
+                android:layout_height="160dp"
+                android:src="@drawable/recyclingbin"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Score -->
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Score: 2/3"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="30dp" />
+
+            <!-- Header for resources -->
+            <TextView
+                android:id="@+id/tvResourcesHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling guidelines and resources:"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Links (5 total) -->
+            <TextView
+                android:id="@+id/link1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling #1"
+                android:textColor="#0066CC"
+                android:textSize="16sp"
+                android:autoLink="web"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/link2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling #2"
+                android:textColor="#0066CC"
+                android:textSize="16sp"
+                android:autoLink="web"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/link3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling #3"
+                android:textColor="#0066CC"
+                android:textSize="16sp"
+                android:autoLink="web"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/link4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling #4"
+                android:textColor="#0066CC"
+                android:textSize="16sp"
+                android:autoLink="web"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/link5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recycling #5"
+                android:textColor="#0066CC"
+                android:textSize="16sp"
+                android:autoLink="web"
+                android:layout_marginBottom="25dp" />
+
+            <!-- Reattempt button -->
+            <Button
+                android:id="@+id/btnReattempt"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="Reattempt quiz"
+                android:textAllCaps="false"
+                android:backgroundTint="#6C41C9"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:id="@+id/tvUpdatedResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*Last updated Oct 2025"
+                android:textSize="12sp"
+                android:layout_marginBottom="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>
