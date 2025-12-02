@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cosc341_recycling_sorting_project.R;
+
 import java.util.List;
 import java.util.Locale;
 
