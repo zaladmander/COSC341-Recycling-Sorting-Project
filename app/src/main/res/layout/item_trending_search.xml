@@ -14,17 +14,17 @@
         android:padding="12dp"
         android:gravity="center_vertical">
 
-        <View
+        <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/darker_gray"
+            android:id="@+id/item_icon"
             android:layout_marginEnd="12dp" />
 
         <TextView
             android:id="@+id/tv_trending_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Coffee Cup"
             android:textSize="24sp"
             android:layout_weight="1"
             android:textStyle="bold"/>

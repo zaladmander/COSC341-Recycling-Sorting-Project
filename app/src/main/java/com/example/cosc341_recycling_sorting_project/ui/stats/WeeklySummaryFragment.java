@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -61,9 +62,9 @@ public class WeeklySummaryFragment extends Fragment {
         rvItems.setLayoutManager(new LinearLayoutManager(requireContext()));
         sampleItems = new ArrayList<>();
         adapter = new WeeklyItemsAdapter(sampleItems, item -> {
-            // placeholder item click handling
+            // item click handling
             Log.d("WeeklySummary", "Item clicked: " + item.getName());
-            // TODO: navigate to item detail if desired
+                showItemDialog(item);
         });
         rvItems.setAdapter(adapter);
 
@@ -121,6 +122,36 @@ public class WeeklySummaryFragment extends Fragment {
                 btnSeeItems.setText("See Items");
             }
         });
+    }
+    private void showItemDialog(Recyclable item) {
+        if (!isAdded()) return; // fragment not attached
+        LayoutInflater inflater = LayoutInflater.from(requireContext());
+        View dialogView = inflater.inflate(R.layout.dialog_item_detail, null);
+
+        ImageView iv = dialogView.findViewById(R.id.iv_item_image);
+        TextView tvName = dialogView.findViewById(R.id.tv_item_name);
+        TextView tvDesc = dialogView.findViewById(R.id.tv_item_desc);
+
+        tvName.setText(item.getName() != null ? item.getName() : "Unknown");
+        tvDesc.setText(item.getDescription() != null ? item.getDescription() : "");
+
+        // Two common ways to populate the image:
+        // 1) If your Recyclable exposes a local drawable resource id (int)
+        try {
+            int resId = item.getImageResId(); // implement this in your model if you don't already have it
+            if (resId != 0) {
+                iv.setImageResource(resId);
+            }
+        } catch (Exception ignored) {
+            // ignore if not present
+        }
+
+        androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setView(dialogView)
+                .setPositiveButton("OK", (d, which) -> d.dismiss())
+                .create();
+
+        dialog.show();
     }
 
 }

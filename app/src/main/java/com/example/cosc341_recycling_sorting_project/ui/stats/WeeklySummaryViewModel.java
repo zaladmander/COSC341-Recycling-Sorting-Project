@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.cosc341_recycling_sorting_project.R;
 import com.example.cosc341_recycling_sorting_project.ui.identification.Recyclable;
 
 import java.util.ArrayList;
@@ -49,9 +50,9 @@ public class WeeklySummaryViewModel extends ViewModel {
             // create sample data
             double fetchedKgs = 12.4;
             List<Recyclable> fetchedItems = new ArrayList<>();
-            fetchedItems.add(new Recyclable("Coffee Cup", "Goes in Recycling Cart"));
-            fetchedItems.add(new Recyclable("Glass Bottle", "Rinse first"));
-            fetchedItems.add(new Recyclable("Aluminum Can", "Recyclable"));
+            fetchedItems.add(new Recyclable("Aerosol Cans", "Completely empty aerosol cans for food, deodorant, hairspray, shaving cream and air freshener. Return partially full or paint aerosols to a hazardous waste program.", R.drawable.aerosol_cans));
+            fetchedItems.add(new Recyclable("Glass Jars", "Clear or coloured glass food jars and bottles that do not carry a beverage deposit. Empty, rinse and remove lids.", R.drawable.glass_jars_bottles));
+            fetchedItems.add(new Recyclable("Newspaper flyers", "Clean newspapers, community papers and advertising flyers. Recycle loose with other paper.", R.drawable.newspapers_flyers));
 
             // post results back to LiveData (background thread -> use postValue)
             kgs.postValue(fetchedKgs);
