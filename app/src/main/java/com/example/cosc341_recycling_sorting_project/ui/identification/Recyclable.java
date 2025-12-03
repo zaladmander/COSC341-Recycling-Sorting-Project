@@ -15,7 +15,11 @@ public class Recyclable {
     }
 
     public Recyclable(String name, String description) {
-        this(name, description, -1, null);
+        this(name, description, 0, null);
+    }
+
+    public Recyclable(String name, String description, int imageResId) {
+        this(name, description, imageResId, null);
     }
 
     public String getName() {

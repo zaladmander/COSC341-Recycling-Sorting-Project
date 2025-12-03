@@ -15,7 +15,7 @@
         android:gravity="center_vertical">
 
         <!-- placeholder image / icon -->
-        <View
+        <ImageView
             android:id="@+id/item_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -35,14 +35,6 @@
                 android:text="Coffee Cup"
                 android:textStyle="bold"
                 android:textSize="32sp"/>
-
-            <TextView
-                android:id="@+id/item_sub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Goes in Recycling Cart"
-                android:textSize="24sp"
-                android:textColor="@android:color/darker_gray"/>
 
         </LinearLayout>
 

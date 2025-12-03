@@ -3,6 +3,7 @@ package com.example.cosc341_recycling_sorting_project.ui.stats;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,8 +37,13 @@ public class TrendingSearchesAdapter extends RecyclerView.Adapter<TrendingSearch
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         Recyclable it = items.get(position);
-        holder.name.setText(it.getName());
+        if (it.getImageResId() != 0) {
+            holder.imView.setImageResource(it.getImageResId());
+        } else {
+            holder.imView.setImageResource(R.drawable.bronze_badge); // fallback
+        }
         holder.count.setText((position + 100) + " searches"); // placeholder
+        holder.name.setText(it.getName());
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onClick(it);
         });
@@ -48,9 +54,11 @@ public class TrendingSearchesAdapter extends RecyclerView.Adapter<TrendingSearch
 
     static class Holder extends RecyclerView.ViewHolder {
         final TextView name;
+        final ImageView imView;
         final TextView count;
         Holder(@NonNull View itemView) {
             super(itemView);
+            imView = itemView.findViewById((R.id.item_icon));
             name = itemView.findViewById(R.id.tv_trending_name);
             count = itemView.findViewById(R.id.tv_trending_count);
         }
