@@ -94,9 +94,28 @@
         tools:layout="@layout/fragment_quiz" />
 
     <fragment
-        android:id="@+id/nav_depots"
-        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.FragmentDepots"
-        android:label="Depots"
-        tools:layout="@layout/fragment_depots" />
+        android:id="@+id/navigation_permission"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.PermissionFragment"
+        android:label="Permission"
+        tools:layout="@layout/fragment_permission" />
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.MapFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/navigation_list"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.ListFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list" />
+
+    <fragment
+        android:id="@+id/navigation_data_policy"
+        android:name="com.example.cosc341_recycling_sorting_project.ui.depots.DataPolicyFragment"
+        android:label="Data Policy"
+        tools:layout="@layout/fragment_data_policy" />
+
 
 </navigation>

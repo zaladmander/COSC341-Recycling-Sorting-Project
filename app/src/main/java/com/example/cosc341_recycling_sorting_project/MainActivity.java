@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_pickup,
                 R.id.nav_stats,
                 R.id.nav_quiz,
-                R.id.nav_depots
+                R.id.navigation_permission
         ).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
