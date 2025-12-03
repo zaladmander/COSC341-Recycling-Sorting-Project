@@ -15,7 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.COSC341RecyclingSortingProject">
+
         <receiver android:name=".ui.schedule.NotificationReceiver"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
         <activity
             android:name=".WelcomeActivity"
             android:exported="true"
@@ -30,26 +36,6 @@
             android:name=".MainActivity"
             android:exported="false"/>
 
-        <activity
-            android:name=".PermissionActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".MapActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ListActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".DataPolicyActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

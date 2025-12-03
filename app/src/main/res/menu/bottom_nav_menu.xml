@@ -22,7 +22,7 @@
         android:title="@string/quiz" />
 
     <item
-        android:id="@+id/nav_depots"
+        android:id="@+id/navigation_permission"
         android:icon="@drawable/ic_location"
         android:title="@string/depots" />
 
